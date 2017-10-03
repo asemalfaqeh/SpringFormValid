@@ -5,10 +5,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,6 +56,13 @@ public class Controllers {
 		return "addusers";*/
 	//get data form addusers.jsp
 	
+	//handle Exception
+	//if found exception forward to error.jsp page
+	/*@ExceptionHandler(DataAccessException.class)
+	public String DataAccessExceptionHandle() {
+		return "error";
+	*/
+	
 	//get data from model
 	@RequestMapping(value="AddUser",method=RequestMethod.POST)
 	public String AddUser(Model model,@Valid Users users1,BindingResult br) {
@@ -68,9 +77,28 @@ public class Controllers {
 			return "addusers";
 		}
 		//System.out.println(users);
+		UsersServices.AddnewUser(users1);
 		System.out.println("Success Add");
-		return "addusers";
+		return "home";
 	}
+	
+	@RequestMapping(value="/Update")
+	public String ShowUpdate(Model model) {
+		Users users = new Users();
+		model.addAttribute("users",users);
+		return "userupdate";
+	}
+	
+	@RequestMapping(value="updateuser",method=RequestMethod.POST)
+	public String UpdateUser(Model model,@Valid Users users,BindingResult br) {
+		if(br.hasErrors()) {
+			return "userupdate";
+		}
+		UsersServices.UpdateUser(users);
+		System.out.println("Update Success");
+		return "home";
+	}
+	
 }
 
 

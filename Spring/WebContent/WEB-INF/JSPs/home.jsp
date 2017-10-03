@@ -13,5 +13,6 @@
   <c:out value="Hello"></c:out>
   <a href="<%=request.getContextPath()%>/Home">Show Users</a> <br/>
   <a href="<%=request.getContextPath()%>/Users">Add Users</a>  
+  <a href="<%=request.getContextPath()%>/Update">Update Users</a>
 </body>
 </html>

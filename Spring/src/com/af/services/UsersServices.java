@@ -28,5 +28,13 @@ public class UsersServices {
 		return UsersDao.getUsers();
 	}
 	
+	public static boolean AddnewUser(Users users) {
+		return UsersDao.AddUser(users);
+	}
+	
+	public static boolean UpdateUser(Users users) {
+		return UsersDao.Update(users);
+	}
+	
 	
 }

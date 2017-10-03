@@ -9,9 +9,9 @@ import com.af.validation.ValidEmail;
 
 
 public class Users {
+	
+	@NotNull(message="id Required")
 	private int id;
-	
-	
 	@NotNull(message="Username Required")
 	@Size(min=5,max=20,message="Username not Correct")
 	private String username;
@@ -26,20 +26,7 @@ public class Users {
 	@Size(min=5,max=20,message="Password not Coorect")
 	private String password;
 
-     
-	public Users(String username, String email, String password) {
-		this.username = username;
-		this.email = email;
-		this.password = password;
-	}
-	
-	public Users(String username, String email, String password, int id) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.id = id;
-	}
+    
 
 
 

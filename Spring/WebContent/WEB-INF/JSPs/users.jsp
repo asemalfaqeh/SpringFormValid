@@ -10,22 +10,18 @@
 </head>
 <body>
 
- <c:forEach items="${users }" var="rs">
-       <c:set value="${rs.email }" var="email"/>
-       <c:set value="${rs.username }" var="username"/>
-       <c:set value="${rs.id }" var="id"/>
- </c:forEach>
 
-  <table border="2px">
-    <th>Email</th>
-    <th>Username</th>
-    <th>Id</th>
-   <tr>
-     <td><c:out value="${email }"/></td>
-        <td><c:out value="${username }"/></td>
-           <td><c:out value="${id }"/></td>
-   </tr>
-  </table>
- 
+ <table style="border: 2px black solid;">
+ <tr> <td>Email</td> <td>username</td> <td>id</td> </tr>
+  <c:forEach items="${users }" var="rs">
+     <tr>
+       <td><c:out value="${rs.email }" /></td>
+       <td><c:out value="${rs.username }" /></td>
+       <td><c:out value="${rs.id }" /></td>
+     </tr>
+
+ </c:forEach>
+</table>
+
 </body>
 </html>
